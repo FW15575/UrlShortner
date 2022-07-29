@@ -54,7 +54,7 @@ const createUrl = async (req, res) => {
         let isURLPresent = await urlModel.findOne({ longUrl }).select({ _id: 0, longUrl: 1, shortUrl: 1, urlCode: 1 })
         if (isURLPresent) {
             // -------setting urlData in cache-------
-            await SET_ASYNC(`${longUrl}`, JSON.stringify(isURLPresent))
+             await SET_ASYNC(`${longUrl}`, JSON.stringify(isURLPresent))
             return res.status(200).send({ status: true, data: isURLPresent })
         }
 
